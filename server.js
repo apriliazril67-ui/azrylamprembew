@@ -2,15 +2,15 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 
-// Baca semua file dari folder utama
+// Sajikan semua file dari folder utama
 app.use(express.static(__dirname));
 
-// Halaman utama — cara paling simpel
-app.get('/', (req, res) => {
+// Halaman utama — PALING SEDERHANA
+app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
-// Database tetap jalan
+// Database
 const DB_PATH = __dirname + '/db.json';
 if (!fs.existsSync(DB_PATH)) fs.writeFileSync(DB_PATH, '{}');
 
