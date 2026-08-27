@@ -7,32 +7,32 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ Sajikan semua file dari folder utama
-app.use(express.static(__dirname));
+// ✅ Cara paling pasti — langsung tunjuk folder utama
+app.use(express.static(path.resolve(__dirname)));
 
-// ✅ Halaman utama — BUKA index.html
+// ✅ Halaman utama — cara paling aman
 app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: __dirname });
+  const file = path.resolve(__dirname, 'index.html');
+  res.sendFile(file);
 });
 
 // Database
-const DATA_PATH = path.join(__dirname, 'db.json');
+const DB_PATH = path.resolve(__dirname, 'db.json');
 
-if (!fs.existsSync(DATA_PATH)) {
-  fs.writeFileSync(DATA_PATH, JSON.stringify({}, null, 2));
+if (!fs.existsSync(DB_PATH)) {
+  fs.writeFileSync(DB_PATH, '{}', 'utf8');
 }
 
 function bacaData() {
   try {
-    return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
-  } catch (err) {
-    console.log('Error baca data:', err);
+    return JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+  } catch {
     return {};
   }
 }
 
 function simpanData(data) {
-  fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), 'utf8');
+  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2), 'utf8');
 }
 
 app.get('/api/data', (req, res) => res.json(bacaData()));
@@ -45,8 +45,4 @@ app.post('/api/simpan', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`✅ Jalan di port ${PORT}`);
-  console.log(`📂 Folder utama: ${__dirname}`);
-});
-                   
+app.listen(PORT, () => console.log(`✅ Jalan di port ${PORT}`));
