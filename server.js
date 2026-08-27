@@ -7,37 +7,36 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ Sajikan file dari folder public
+// Sajikan file HTML
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ Halaman utama — WAJIB ADA! Ini yang bikin 404 kalau hilang!
+// Halaman utama
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-
-// Path database
-const DATA_DIR = path.join(__dirname, 'data');
+// ✅ Ganti path data — simpan di folder yang pasti ada
+const DATA_DIR = __dirname; // Langsung di folder utama, gak perlu folder data
 const DATA_PATH = path.join(DATA_DIR, 'db.json');
 
-// Pastikan folder & file ada
-if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-if (!fs.existsSync(DATA_PATH)) fs.writeFileSync(DATA_PATH, JSON.stringify({}, null, 2));
+// Pastikan file ada — gak perlu bikin folder!
+if (!fs.existsSync(DATA_PATH)) {
+  fs.writeFileSync(DATA_PATH, '{}', 'utf8');
+}
 
-const DATA_PATH = path.join(DATA_DIR, 'db.json');
-
-if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-if (!fs.existsSync(DATA_PATH)) fs.writeFileSync(DATA_PATH, JSON.stringify({}, null, 2));
-
+// Fungsi baca tulis data
 function bacaData() {
-  try { return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8')); }
-  catch { return {}; }
+  try {
+    return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
+  } catch {
+    return {};
+  }
 }
 function simpanData(data) {
-  fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2));
+  fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), 'utf8');
 }
 
-// API sederhana
+// API
 app.get('/api/data', (req, res) => res.json(bacaData()));
 app.post('/api/simpan', (req, res) => {
   const data = bacaData();
