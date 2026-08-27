@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beli AM Premium - AM Premium Store</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div id="app-nav"></div>
+  <main class="container">
+    <h2 style="margin:0 0 4px;">Beli Alight Motion Premium</h2>
+    <p class="card-sub">Masukkan jumlah yang ingin dibeli. Kalau saldo & stok cukup, otomatis langsung terkirim ke Riwayat Pesanan.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Form Pemesanan</div>
+        <div id="msg-box"></div>
+        <form id="order-form">
+          <div class="field">
+            <label>Jumlah</label>
+            <input type="number" id="jumlah" min="1" value="1" required>
+          </div>
+          <div class="field">
+            <label>Total Bayar</label>
+            <input type="text" id="total-preview" disabled value="Rp0">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="btn-order">Beli Sekarang</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Info</div>
+        <table>
+          <tr><td>Harga / unit</td><td id="info-price">-</td></tr>
+          <tr><td>Saldo kamu</td><td id="info-saldo">-</td></tr>
+          <tr><td>Sisa stok</td><td id="info-stock">-</td></tr>
+        </table>
+        <p class="hint">Saldo kurang? <a href="topup.html" style="color:var(--cyan)">Top up dulu di sini</a>.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/order.js"></script>
+</body>
+</html>

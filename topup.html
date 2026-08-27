@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Up - AM Premium Store</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div id="app-nav"></div>
+  <main class="container">
+    <h2 style="margin:0 0 4px;">Top Up Saldo</h2>
+    <p class="card-sub">Minimal top up <b id="min-topup-text">Rp1.000</b>. Saldo masuk setelah admin konfirmasi.</p>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Cara Top Up</div>
+        <div class="qr-box">
+          <img id="qr-image" src="" alt="QR Pembayaran">
+        </div>
+        <div class="dana-info">
+          DANA: <b id="dana-number">-</b><br>
+          a.n <b id="dana-name">-</b>
+        </div>
+        <ol class="steps">
+          <li>Kirim uang sesuai nominal ke QR di atas / nomor DANA.</li>
+          <li>Masukkan nominal yang kamu kirim di form sebelah.</li>
+          <li>Masukkan nama pengirim (sesuai bukti transfer).</li>
+          <li>Tunggu 1-10 menit, saldo masuk setelah dikonfirmasi admin.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Form Top Up</div>
+        <div id="msg-box"></div>
+        <form id="topup-form">
+          <div class="field">
+            <label>Nominal</label>
+            <input type="number" id="nominal" min="1000" required>
+          </div>
+          <div class="field">
+            <label>Nama Pengirim</label>
+            <input type="text" id="nama-pengirim" required placeholder="Sesuai nama di bukti transfer">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="btn-topup">Kirim Konfirmasi Top Up</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/topup.js"></script>
+</body>
+</html>

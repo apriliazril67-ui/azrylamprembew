@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Admin - AM Premium Store</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div id="app-nav"></div>
+  <main class="container">
+    <h2 style="margin:0 0 4px;">Panel Admin</h2>
+    <p class="card-sub">Pantau user, pesanan, konfirmasi deposit, dan kelola stok AM Premium.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="label">Total User</div><div class="value" id="s-users">-</div></div>
+      <div class="stat-card"><div class="label">Total Pesanan</div><div class="value" id="s-orders">-</div></div>
+      <div class="stat-card"><div class="label">Total Omzet</div><div class="value accent" id="s-omzet">-</div></div>
+      <div class="stat-card"><div class="label">Deposit Pending</div><div class="value" id="s-pending">-</div></div>
+      <div class="stat-card"><div class="label">Sisa Stok</div><div class="value" id="s-stock">-</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Konfirmasi Deposit</div>
+      <p class="card-sub">Semua pengajuan top up. Deposit pending tampil paling atas.</p>
+      <table>
+        <thead><tr><th>Tanggal</th><th>User</th><th>Nominal</th><th>Nama Pengirim</th><th>Status</th><th></th></tr></thead>
+        <tbody id="deposits-body"><tr class="empty-row"><td colspan="6">Memuat...</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Daftar User</div>
+      <table>
+        <thead><tr><th>Username</th><th>Saldo</th><th>Bergabung</th></tr></thead>
+        <tbody id="users-body"><tr class="empty-row"><td colspan="3">Memuat...</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Semua Pesanan</div>
+      <table>
+        <thead><tr><th>Tanggal</th><th>User</th><th>Jumlah</th><th>Total</th></tr></thead>
+        <tbody id="orders-body"><tr class="empty-row"><td colspan="4">Memuat...</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Kelola Stok Alight Motion Premium</div>
+      <p class="card-sub">Tempel satu akun/kode per baris, lalu klik Tambah. Item paling atas yang akan terkirim duluan ke pembeli.</p>
+      <div id="stock-msg"></div>
+      <div class="field">
+        <textarea id="stock-text" placeholder="contoh:&#10;akun1@mail.com|password1&#10;akun2@mail.com|password2"></textarea>
+      </div>
+      <button class="btn btn-primary" id="btn-add-stock">Tambah ke Stok</button>
+
+      <table style="margin-top:18px;">
+        <thead><tr><th>#</th><th>Item</th><th></th></tr></thead>
+        <tbody id="stock-body"><tr class="empty-row"><td colspan="3">Memuat...</td></tr></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

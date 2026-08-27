@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riwayat Deposit - AM Premium Store</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div id="app-nav"></div>
+  <main class="container">
+    <h2 style="margin:0 0 4px;">Riwayat Deposit</h2>
+    <p class="card-sub">Status top up yang pernah kamu ajukan.</p>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>Tanggal</th><th>Nominal</th><th>Nama Pengirim</th><th>Status</th></tr>
+        </thead>
+        <tbody id="deposits-body">
+          <tr class="empty-row"><td colspan="4">Memuat...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/riwayat-deposit.js"></script>
+</body>
+</html>

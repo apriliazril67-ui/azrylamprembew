@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riwayat Pesanan - AM Premium Store</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div id="app-nav"></div>
+  <main class="container">
+    <h2 style="margin:0 0 4px;">Riwayat Pesanan</h2>
+    <p class="card-sub">Semua pembelian AM Premium yang sudah otomatis terkirim.</p>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>Tanggal</th><th>Jumlah</th><th>Total</th><th>Item Terkirim</th></tr>
+        </thead>
+        <tbody id="orders-body">
+          <tr class="empty-row"><td colspan="4">Memuat...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/riwayat-pesanan.js"></script>
+</body>
+</html>

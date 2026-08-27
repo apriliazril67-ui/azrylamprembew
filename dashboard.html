@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - AM Premium Store</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <div id="app-nav"></div>
+  <main class="container">
+    <div class="timeline-strip">
+      <div class="kf on"></div><div class="track"></div><div class="kf"></div><div class="track"></div><div class="kf"></div>
+    </div>
+
+    <h2 style="margin:0 0 4px;">Halo, <span id="hello-username"></span> 👋</h2>
+    <p class="card-sub">Ini ringkasan akun kamu di AM Premium Store.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="label">Saldo Kamu</div>
+        <div class="value accent" id="stat-saldo">Rp0</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Stok AM Premium</div>
+        <div class="value" id="stat-stock">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Harga / Unit</div>
+        <div class="value" id="stat-price">-</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Beli AM Premium</div>
+        <p class="card-sub">Order otomatis terkirim selama saldo & stok cukup.</p>
+        <a href="order.html" class="btn btn-primary btn-block">Beli Sekarang</a>
+      </div>
+      <div class="card">
+        <div class="card-title">Top Up Saldo</div>
+        <p class="card-sub">Isi saldo lewat QRIS/DANA, dikonfirmasi admin.</p>
+        <a href="topup.html" class="btn btn-outline btn-block">Top Up</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
