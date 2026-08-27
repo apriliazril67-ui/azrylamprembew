@@ -7,12 +7,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ Langsung dari folder utama — TIDAK PAKAI /public
+// ✅ Sajikan semua file dari folder utama
 app.use(express.static(__dirname));
 
-// ✅ Buka index.html langsung
+// ✅ Halaman utama — BUKA index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  const filePath = path.join(__dirname, 'index.html');
+  console.log('Mencari file di:', filePath); // ← buat cek path
+  res.sendFile(filePath);
 });
 
 // Database
@@ -23,8 +25,12 @@ if (!fs.existsSync(DATA_PATH)) {
 }
 
 function bacaData() {
-  try { return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8')); }
-  catch { return {}; }
+  try {
+    return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
+  } catch (err) {
+    console.log('Error baca data:', err);
+    return {};
+  }
 }
 
 function simpanData(data) {
@@ -41,4 +47,8 @@ app.post('/api/simpan', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`✅ Jalan di port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`✅ Jalan di port ${PORT}`);
+  console.log(`📂 Folder utama: ${__dirname}`);
+});
+                   
