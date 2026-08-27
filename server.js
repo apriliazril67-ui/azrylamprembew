@@ -7,15 +7,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ Langsung baca dari folder utama — GAK PAKAI FOLDER PUBLIC!
+// ✅ Langsung dari folder utama — TIDAK PAKAI /public
 app.use(express.static(__dirname));
 
-// Halaman utama — langsung baca index.html
+// ✅ Buka index.html langsung
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Database — langsung di folder utama
+// Database
 const DATA_PATH = path.join(__dirname, 'db.json');
 
 if (!fs.existsSync(DATA_PATH)) {
@@ -23,11 +23,8 @@ if (!fs.existsSync(DATA_PATH)) {
 }
 
 function bacaData() {
-  try {
-    return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
-  } catch {
-    return {};
-  }
+  try { return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8')); }
+  catch { return {}; }
 }
 
 function simpanData(data) {
