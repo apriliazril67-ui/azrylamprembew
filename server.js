@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+
 // Path database
 const DATA_DIR = process.env.NODE_ENV === 'production' 
   ? '/app/data' 
