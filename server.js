@@ -17,9 +17,12 @@ app.get('/', (req, res) => {
 
 
 // Path database
-const DATA_DIR = process.env.NODE_ENV === 'production' 
-  ? '/app/data' 
-  : path.join(__dirname, 'data');
+const DATA_DIR = path.join(__dirname, 'data');
+const DATA_PATH = path.join(DATA_DIR, 'db.json');
+
+// Pastikan folder & file ada
+if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+if (!fs.existsSync(DATA_PATH)) fs.writeFileSync(DATA_PATH, JSON.stringify({}, null, 2));
 
 const DATA_PATH = path.join(DATA_DIR, 'db.json');
 
