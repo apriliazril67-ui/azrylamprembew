@@ -12,9 +12,7 @@ app.use(express.static(__dirname));
 
 // ✅ Halaman utama — BUKA index.html
 app.get('/', (req, res) => {
-  const filePath = path.join(__dirname, 'index.html');
-  console.log('Mencari file di:', filePath); // ← buat cek path
-  res.sendFile(filePath);
+  res.sendFile('index.html', { root: __dirname });
 });
 
 // Database
